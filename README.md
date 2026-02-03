@@ -116,4 +116,3 @@ Edit the `TEAM_MEMBERS` array in `src/components/Team.jsx`
 ## Links
 
 - [FAU Erlangen-Nürnberg](https://www.fau.eu)
-- [Chair of Automatic Control](https://www.fau.eu)

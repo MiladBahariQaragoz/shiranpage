@@ -4,25 +4,28 @@ import { useState } from 'react'
 const TEAM_MEMBERS = [
     {
         id: 1,
-        name: 'Team Member 1',
-        role: 'Perception Lead',
+        name: 'Milad Bahari Qaragoz',
+        role: 'Estimation & Web_Developement',
         status: 'active',
-        linkedin: 'https://linkedin.com/in/username',
-        github: 'https://github.com/username'
+        image: '/team/milad.png',  // Add your image here
+        linkedin: 'https://www.linkedin.com/in/milad-bahari-qarag%C3%B6z/',
+        github: 'https://github.com/MiladBahariQaragoz'
     },
     {
         id: 2,
-        name: 'Team Member 2',
-        role: 'Estimation Lead',
+        name: 'Kazhal Shirvani',
+        role: 'Control',
         status: 'active',
+        image: '/team/kazhal.png',  // Add your image here
         linkedin: 'https://linkedin.com/in/username',
         github: 'https://github.com/username'
     },
     {
         id: 3,
-        name: 'Team Member 3',
-        role: 'Planning Lead',
+        name: 'Mohammadsadegh Shoushtari',
+        role: 'Perception',
         status: 'active',
+        image: '/team/sadegh.png',  // Add your image here
         linkedin: 'https://linkedin.com/in/username',
         github: 'https://github.com/username'
     },
@@ -78,12 +81,20 @@ function TeamMemberCard({ member, index }) {
             <div className="relative w-24 h-24 mx-auto mb-4">
                 {/* Hexagon shape using clip-path */}
                 <div
-                    className="w-full h-full bg-speed-gradient flex items-center justify-center text-3xl font-display font-bold text-white"
+                    className="w-full h-full bg-speed-gradient flex items-center justify-center text-3xl font-display font-bold text-white overflow-hidden"
                     style={{
                         clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
                     }}
                 >
-                    {member.name.charAt(0)}
+                    {member.image ? (
+                        <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-full h-full object-cover"
+                        />
+                    ) : (
+                        member.name.charAt(0)
+                    )}
                 </div>
 
                 {/* Status indicator */}

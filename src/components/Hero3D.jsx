@@ -1,16 +1,16 @@
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, PerspectiveCamera, Environment, useProgress, Html } from '@react-three/drei'
 import { Suspense, useRef, useEffect } from 'react'
-import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader'
+import { useGLTF } from '@react-three/drei'
 import { useLoader } from '@react-three/fiber'
 import * as THREE from 'three'
 import SpeedLines from './SpeedLines'
 
-// Real 3D Car Model from PLY with bright material
+// Real 3D Car Model from GLB with internal lighting
 function Car3D() {
-    const geometry = useLoader(PLYLoader, '/car.ply')
+    const { scene } = useGLTF('/car.glb')
     const carRef = useRef()
-    const outlineRef = useRef()
+    const innerLightRef = useRef()
 
     // Subtle bobbing animation only
     useFrame((state, delta) => {
@@ -18,43 +18,50 @@ function Car3D() {
             // Subtle bobbing animation
             carRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.1
         }
-        if (outlineRef.current) {
-            outlineRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.1
+        if (innerLightRef.current) {
+            innerLightRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.1
         }
     })
 
-    // Center the geometry
+    // Clone and prepare model
+    const carModel = scene.clone()
+
+    // Center the model and apply materials
     useEffect(() => {
-        if (geometry) {
-            geometry.center()
-            geometry.computeVertexNormals()
-        }
-    }, [geometry])
+        // Setup main car model - preserve original colors
+        carModel.traverse((child) => {
+            if (child.isMesh) {
+                child.geometry.center()
+                // Keep the original material and just enhance it
+                if (child.material) {
+                    // Don't replace the material, just modify its properties
+                    child.material.transparent = true
+                    child.material.opacity = 0.9
+                    child.material.metalness = 0.5
+                    child.material.roughness = 0.4
+                    child.material.needsUpdate = true
+                }
+            }
+        })
+    }, [carModel])
 
     return (
-        <group rotation={[Math.PI / 2 + Math.PI, 0, 0]}>
-            {/* Outline/Glow effect */}
-            <mesh ref={outlineRef} geometry={geometry} scale={15.6}>
-                <meshBasicMaterial
-                    color="#E10600"
-                    transparent
-                    opacity={0.1}
-                    side={THREE.BackSide}
-                />
-            </mesh>
+        <group>
+            {/* Internal point light to illuminate from within */}
+            <pointLight
+                ref={innerLightRef}
+                position={[0, 0, 0]}
+                intensity={3}
+                distance={10}
+                color="#ffffff"
+            />
 
-            {/* Main car model with 80% transparency */}
-            <mesh ref={carRef} geometry={geometry} scale={15}>
-                <meshStandardMaterial
-                    color="#ffffff"
-                    metalness={0.1}
-                    roughness={0.5}
-                    emissive="#ffffff"
-                    emissiveIntensity={0.9}
-                    transparent
-                    opacity={0.2}
-                />
-            </mesh>
+            {/* Main car model */}
+            <primitive
+                ref={carRef}
+                object={carModel}
+                scale={15}
+            />
         </group>
     )
 }
@@ -126,36 +133,44 @@ export default function Hero3D() {
             {/* Telemetry HUD Overlay */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="text-center px-4 relative">
-                    {/* Main Title */}
-                    <h1 className="font-display text-6xl md:text-8xl font-bold text-white mb-4 gradient-text tracking-tight">
-                        ROBORACER - SHIRAN
-                    </h1>
+                    {/* Semi-transparent background box */}
+                    <div className="absolute inset-0 bg-black/10 backdrop-blur-sm rounded-lg -m-8"
+                        style={{ transform: 'translateZ(0)' }}
+                    />
 
-                    {/* Subtitle */}
-                    <p className="font-body text-xl md:text-2xl text-telemetry-blue mb-6">
-                        Autonomous Driving at FAU Erlangen-Nürnberg
-                    </p>
+                    {/* Content - positioned above background */}
+                    <div className="relative z-10">
+                        {/* Main Title */}
+                        <h1 className="font-display text-6xl md:text-8xl font-bold text-white mb-4 gradient-text tracking-tight">
+                            ROBORACER - SHIRAN
+                        </h1>
 
-                    {/* Telemetry Data */}
-                    <div className="flex justify-center gap-8 mb-8">
-                        <div className="telemetry-data">
-                            <div className="text-xs text-gray-500">WEEK</div>
-                            <div className="text-2xl font-mono">01</div>
+                        {/* Subtitle */}
+                        <p className="font-body text-xl md:text-2xl text-telemetry-blue mb-6">
+                            Autonomous Driving at FAU Erlangen-Nürnberg
+                        </p>
+
+                        {/* Telemetry Data */}
+                        <div className="flex justify-center gap-8 mb-8">
+                            <div className="telemetry-data">
+                                <div className="text-xs text-gray-500">WEEK</div>
+                                <div className="text-2xl font-mono">01</div>
+                            </div>
+                            <div className="telemetry-data">
+                                <div className="text-xs text-gray-500">STATUS</div>
+                                <div className="text-2xl font-mono">ACTIVE</div>
+                            </div>
+                            <div className="telemetry-data">
+                                <div className="text-xs text-gray-500">PHASE</div>
+                                <div className="text-2xl font-mono">SETUP</div>
+                            </div>
                         </div>
-                        <div className="telemetry-data">
-                            <div className="text-xs text-gray-500">STATUS</div>
-                            <div className="text-2xl font-mono">ACTIVE</div>
-                        </div>
-                        <div className="telemetry-data">
-                            <div className="text-xs text-gray-500">PHASE</div>
-                            <div className="text-2xl font-mono">SETUP</div>
-                        </div>
+
+                        {/* Scroll Indicator */}
+                        <p className="font-body text-sm md:text-base text-gray-400 mt-8 animate-pulse">
+                            ↓ SCROLL TO EXPLORE
+                        </p>
                     </div>
-
-                    {/* Scroll Indicator */}
-                    <p className="font-body text-sm md:text-base text-gray-400 mt-8 animate-pulse">
-                        ↓ SCROLL TO EXPLORE
-                    </p>
                 </div>
             </div>
 

@@ -38,7 +38,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <a
-                                    href="https://www.fau.eu"
+                                    href="https://www.ac.tf.fau.eu/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="font-body text-race-red hover:text-velocity-orange transition-colors flex items-center gap-2 group"
