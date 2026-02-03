@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Racing Color System */
+  --race-red: #E10600;
+  --velocity-orange: #FF6B00;
+  --carbon-black: #0D0D0D;
+  --titanium: #1A1A1A;
+  --steel-gray: #2A2A2A;
+  --aluminum: #3F3F3F;
+  --data-green: #00FF41;
+  --warning-amber: #FFB800;
+  --telemetry-blue: #00D9FF;
+
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.95);
+  background-color: var(--carbon-black);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--carbon-black);
+}
+
+/* Professional Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Active milestone glow (racing red) */
+.glow-active {
+  animation: glow-pulse 2s ease-in-out infinite;
+  border-color: var(--race-red);
+  box-shadow: 0 0 30px rgba(225, 6, 0, 0.6);
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.5), 0 0 40px rgba(225, 6, 0, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(225, 6, 0, 0.8), 0 0 60px rgba(225, 6, 0, 0.5);
+  }
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(135deg, var(--race-red) 0%, var(--velocity-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover effect with lift */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(225, 6, 0, 0.4);
+}
+
+/* Canvas container for 3D */
+.canvas-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Carbon fiber texture */
+.carbon-fiber {
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      transparent 1px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 3px),
+    repeating-linear-gradient(90deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      transparent 1px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 3px);
+  background-color: var(--steel-gray);
+}
+
+/* Speed lines (diagonal) */
+.speed-lines {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.speed-line {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--race-red) 50%, transparent 100%);
+  opacity: 0.3;
+  transform: rotate(-15deg);
+}
+
+/* Telemetry data display */
+.telemetry-data {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--data-green);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Racing accent border */
+.racing-border {
+  position: relative;
+}
+
+.racing-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--race-red) 0%, var(--velocity-orange) 100%);
+}
+
+/* Diagonal accent line */
+.diagonal-accent {
+  position: relative;
+  overflow: hidden;
+}
+
+.diagonal-accent::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 100px;
+  height: 2px;
+  background: var(--race-red);
+  transform: rotate(-45deg);
+  transform-origin: top right;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--race-red);
+  outline-offset: 2px;
+}
