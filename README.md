@@ -2,8 +2,11 @@
 
 A stunning, interactive landing page for the **RoboRacer** autonomous driving project at **FAU Erlangen-Nürnberg**. Built with modern web technologies and featuring a cyberpunk racing aesthetic with real-time 3D visualization.
 
+🌐 **[Live Preview](https://shiranpage.vercel.app/)** - View the deployed site
+
 [![Project Status](https://img.shields.io/badge/Status-Active-success)](https://github.com/farhadvaseghi/RoboRacer-Shiran)
 [![Start Date](https://img.shields.io/badge/Start%20Date-Feb%203%2C%202026-blue)](https://github.com/farhadvaseghi/RoboRacer-Shiran)
+[![Live Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://shiranpage.vercel.app/)
 
 ---
 
