@@ -17,8 +17,8 @@ const TEAM_MEMBERS = [
         role: 'Control',
         status: 'active',
         image: '/team/kazhal.png',
-        linkedin: 'https://linkedin.com/in/username',
-        github: 'https://github.com/username'
+        linkedin: 'https://www.linkedin.com/in/kazhal-shirvani-67376b1b8/',
+        github: 'https://github.com/kazhalshirvani'
     },
     {
         id: 3,
