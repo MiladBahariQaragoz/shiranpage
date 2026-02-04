@@ -27,7 +27,7 @@ export default function Footer() {
                         <ul className="space-y-3">
                             <li>
                                 <a
-                                    href="https://github.com"
+                                    href="https://github.com/farhadvaseghi/RoboRacer-Shiran"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="font-body text-race-red hover:text-velocity-orange transition-colors flex items-center gap-2 group"

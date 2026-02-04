@@ -26,24 +26,26 @@ const TEAM_MEMBERS = [
         role: 'Perception',
         status: 'active',
         image: '/team/sadegh.png',
-        linkedin: 'https://linkedin.com/in/username',
-        github: 'https://github.com/username'
+        linkedin: 'https://www.linkedin.com/in/sadegh-sh',
+        github: 'https://github.com/sadeghshoushtari'
     },
     {
         id: 4,
-        name: 'Team Member 4',
-        role: 'Control Lead',
+        name: 'Mohammad Barabadi',
+        role: 'Planning',
         status: 'active',
-        linkedin: 'https://linkedin.com/in/username',
-        github: 'https://github.com/username'
+        image: '/team/barabadi.png',
+        linkedin: 'https://www.linkedin.com/in/mohammadbrd/',
+        github: 'https://github.com/mohammadbrd'
     },
     {
         id: 5,
-        name: 'Team Member 5',
-        role: 'Integration Lead',
+        name: 'Farhad Vaseghi',
+        role: 'Perception',
         status: 'active',
-        linkedin: 'https://linkedin.com/in/username',
-        github: 'https://github.com/username'
+        image: '/team/farhad.png',
+        linkedin: 'https://www.linkedin.com/in/farhad-vaseghi-0986953a8/',
+        github: 'https://github.com/farhadvaseghi'
     },
 ]
 
