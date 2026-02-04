@@ -7,7 +7,7 @@ const TEAM_MEMBERS = [
         name: 'Milad Bahari Qaragoz',
         role: 'Estimation & Web_Developement',
         status: 'active',
-        image: '/public/team/milad.png',  // Add your image here
+        image: '/team/milad.png',
         linkedin: 'https://www.linkedin.com/in/milad-bahari-qarag%C3%B6z/',
         github: 'https://github.com/MiladBahariQaragoz'
     },
@@ -16,7 +16,7 @@ const TEAM_MEMBERS = [
         name: 'Kazhal Shirvani',
         role: 'Control',
         status: 'active',
-        image: '/public/team/kazhal.png',  // Add your image here
+        image: '/team/kazhal.png',
         linkedin: 'https://linkedin.com/in/username',
         github: 'https://github.com/username'
     },
@@ -25,7 +25,7 @@ const TEAM_MEMBERS = [
         name: 'Mohammadsadegh Shoushtari',
         role: 'Perception',
         status: 'active',
-        image: '/public/team/sadegh.png',  // Add your image here
+        image: '/team/sadegh.png',
         linkedin: 'https://linkedin.com/in/username',
         github: 'https://github.com/username'
     },
