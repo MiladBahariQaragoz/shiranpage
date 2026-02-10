@@ -14,7 +14,7 @@ const TEAM_MEMBERS = [
     {
         id: 2,
         name: 'Kazhal Shirvani',
-        role: 'Control',
+        role: 'Planning',
         status: 'active',
         image: '/team/kazhal.png',
         linkedin: 'https://www.linkedin.com/in/kazhal-shirvani-67376b1b8/',
@@ -23,7 +23,7 @@ const TEAM_MEMBERS = [
     {
         id: 3,
         name: 'Mohammadsadegh Shoushtari',
-        role: 'Perception',
+        role: 'Perception & Autonomy Integration',
         status: 'active',
         image: '/team/sadegh.png',
         linkedin: 'https://www.linkedin.com/in/sadegh-sh',
@@ -32,7 +32,7 @@ const TEAM_MEMBERS = [
     {
         id: 4,
         name: 'Mohammad Barabadi',
-        role: 'Planning',
+        role: 'Control',
         status: 'active',
         image: '/team/barabadi.png',
         linkedin: 'https://www.linkedin.com/in/mohammadbrd/',
@@ -41,7 +41,7 @@ const TEAM_MEMBERS = [
     {
         id: 5,
         name: 'Farhad Vaseghi',
-        role: 'Perception',
+        role: 'Perception & Autonomy Integration',
         status: 'active',
         image: '/team/farhad.png',
         linkedin: 'https://www.linkedin.com/in/farhad-vaseghi-0986953a8/',
