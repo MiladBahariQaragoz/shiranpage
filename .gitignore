@@ -41,3 +41,6 @@ CATALOG.md
 
 # Gemini/AI artifacts
 .gemini/
+
+# Vercel deployment
+.vercel/
